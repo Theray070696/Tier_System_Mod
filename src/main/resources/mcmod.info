@@ -1,0 +1,16 @@
+[
+{
+  "modid": "tiersystem",
+  "name": "Tier System",
+  "description": "A configurable tier system, which allows users to block the crafting of certain items and blocks until a certain monster/animal/boss is defeated.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Theray070696"],
+  "credits": "JasterMK5, for the idea and helping me with testing.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

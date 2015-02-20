@@ -1,0 +1,21 @@
+# Chat Localizations
+
+bossKilled=has slain the dreaded
+bossKilledPlayer=You have slain the dreaded
+
+everyBossSlain1=Every boss for tier
+everyBossSlain2=has been slain
+tierHasBeenUnlocked1=Tier
+tierHasBeenUnlocked2=has been unlocked
+
+# Item Localizations
+
+item.tiersystem:tierUp.name=Tier-Up
+
+# Block Localizations
+
+tile.tiersystem:tierDeliverySystem.name=Tier Delivery System (WIP)
+
+# Container/Gui Localizations
+
+container.tierDeliverySystem=Tier Delivery System (WIP)
