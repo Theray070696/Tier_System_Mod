@@ -46,7 +46,6 @@ public class ItemTierUp extends ItemTierSystem
                         TierSystem.pipeline.sendTo(new PacketSyncTiers(entityPlayer), (EntityPlayerMP) entityPlayer);
                     }
 
-
                     itemStack.stackSize--;
 
                 }

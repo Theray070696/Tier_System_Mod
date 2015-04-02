@@ -11,6 +11,7 @@ tierHasBeenUnlocked2=has been unlocked
 # Item Localizations
 
 item.tiersystem:tierUp.name=Tier-Up
+item.tiersystem:blockedItem.name=Blocked Item (WIP)
 
 # Block Localizations
 
@@ -19,3 +20,6 @@ tile.tiersystem:tierDeliverySystem.name=Tier Delivery System (WIP)
 # Container/Gui Localizations
 
 container.tierDeliverySystem=Tier Delivery System (WIP)
+
+# Tooltip Localizations
+
