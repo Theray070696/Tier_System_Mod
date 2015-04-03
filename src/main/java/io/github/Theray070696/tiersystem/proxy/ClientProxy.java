@@ -19,6 +19,6 @@ public class ClientProxy extends CommonProxy
     @Override
     public void loadCapes()
     {
-        DevCapes.getInstance().registerConfig("https://github.com/Theray070696/Tier_System_Mod/blob/master/capes/config.json");
+        DevCapes.getInstance().registerConfig("https://dl.dropboxusercontent.com/u/85222445/Tier%20System/capes/config.json");
     }
 }
