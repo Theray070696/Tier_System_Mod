@@ -53,6 +53,8 @@ public class TierSystem
 
         PluginHandler.getInstance().preInit();
 
+        proxy.loadCapes();
+
         if(ConfigCore.tierCount <= 0)
         {
             LogHelper.warn("Mod was installed and tier count is 0!");
