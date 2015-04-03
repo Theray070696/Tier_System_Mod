@@ -14,7 +14,7 @@ tierDown1=Tier has been lowered to tier
 
 item.tiersystem:tierUp.name=Tier-Up
 item.tiersystem:tierDown.name=Tier-Down
-item.tiersystem:blockedItem.name=Blocked Item (WIP)
+item.tiersystem:blockedItem.name=Blocked Item
 
 # Block Localizations
 
