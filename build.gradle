@@ -22,7 +22,7 @@ group = "io.github.Theray070696.tiersystem" // http://maven.apache.org/guides/mi
 archivesBaseName = "tiersystem"
 
 minecraft {
-    version = "1.7.10-10.13.2.1230"
+    version = "1.7.10-10.13.2.1347"
     assetDir = "eclipse/assets"
 }
 
