@@ -14,4 +14,10 @@ public class ServerProxy extends CommonProxy
     {
         return Side.SERVER;
     }
+
+    @Override
+    public void loadCapes()
+    {
+        // Do nothing, as this is server side.
+    }
 }

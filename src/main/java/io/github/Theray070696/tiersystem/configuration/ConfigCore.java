@@ -1,6 +1,7 @@
 package io.github.Theray070696.tiersystem.configuration;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import io.github.Theray070696.tiersystem.lib.ModInfo;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
@@ -45,7 +46,10 @@ public class ConfigCore
         modsBlocked = config.get("Tiers", "blockedMods", modsBlockedDefault, "Mod id's that are blocked, anything from this mod cannot be crafted or used in crafting.").getStringList();
         blockMods = config.get("Tiers", "blockMods", blockModsDefault, "Set this to true to enable blocking entire mods.").getBoolean(blockModsDefault);
         tiersAreServerWide = config.get("Tiers", "tiersAreServerWide", tiersAreServerWideDefault, "If true, tiers will be shared with the entire server, aka, everybody is on the same tier").getBoolean(tiersAreServerWideDefault);
-        itemsToTurnInForNextTier = config.get("Tiers", "itemsToTurnInForNextTier", itemsToTurnInForNextTierDefault, "What item(s)/block(s) you have to turn in to get to the next tier. Formatted the same as restricting items. You can specify an amount by putting it in after the name with a slash, '/', if there is no metadata. If there is metadata, put the slash between the metadata and the amount. IE: 'minecraft:stone/5,minecraft:log 1/6' would make it so you must turn in 5 stone and 6 spruce wood in order to progress to the next tier.").getStringList();
+        if(ModInfo.devModeActive)
+        {
+            itemsToTurnInForNextTier = config.get("Tiers", "itemsToTurnInForNextTier", itemsToTurnInForNextTierDefault, "What item(s)/block(s) you have to turn in to get to the next tier. Formatted the same as restricting items. You can specify an amount by putting it in after the name with a slash, '/', if there is no metadata. If there is metadata, put the slash between the metadata and the amount. IE: 'minecraft:stone/5,minecraft:log 1/6' would make it so you must turn in 5 stone and 6 spruce wood in order to progress to the next tier.").getStringList();
+        }
 
         config.save();
 

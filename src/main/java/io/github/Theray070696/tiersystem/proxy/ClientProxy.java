@@ -1,5 +1,6 @@
 package io.github.Theray070696.tiersystem.proxy;
 
+import com.jadarstudios.developercapes.DevCapes;
 import cpw.mods.fml.relauncher.Side;
 
 /**
@@ -13,5 +14,11 @@ public class ClientProxy extends CommonProxy
     public Side getSide()
     {
         return Side.CLIENT;
+    }
+
+    @Override
+    public void loadCapes()
+    {
+        DevCapes.getInstance().registerConfig("https://github.com/Theray070696/Tier_System_Mod/blob/master/capes/config.json");
     }
 }

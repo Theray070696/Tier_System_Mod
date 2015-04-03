@@ -9,4 +9,6 @@ public interface IProxy
 {
 
     public Side getSide();
+
+    public void loadCapes();
 }

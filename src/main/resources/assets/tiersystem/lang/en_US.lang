@@ -8,9 +8,12 @@ everyBossSlain2=has been slain
 tierHasBeenUnlocked1=Tier
 tierHasBeenUnlocked2=has been unlocked
 
+tierDown1=Tier has been lowered to tier
+
 # Item Localizations
 
 item.tiersystem:tierUp.name=Tier-Up
+item.tiersystem:tierDown.name=Tier-Down
 item.tiersystem:blockedItem.name=Blocked Item (WIP)
 
 # Block Localizations
