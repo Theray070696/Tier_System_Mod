@@ -117,6 +117,12 @@ public class TierHandler
                     return;
                 }
             }
+        } else if(!ConfigCore.thingsToKillForTiers[currentTier].contains(",") && !ConfigCore.thingsToKillForTiers[currentTier].equals(""))
+        {
+            if(ConfigCore.thingsToKillForTiers[currentTier].equals(boss))
+            {
+                bossesKilled.add(boss);
+            }
         }
     }
 
@@ -128,7 +134,7 @@ public class TierHandler
             return;
         }
 
-        if(!wasBossKilledForPlayer(boss, entityPlayer) && currentTierForPlayer.get(entityPlayer) < ConfigCore.thingsToKillForTiers.length && ConfigCore.tierCount > 0)
+        if(ConfigCore.tierCount > 0 && !wasBossKilledForPlayer(boss, entityPlayer) && currentTierForPlayer.get(entityPlayer) < ConfigCore.thingsToKillForTiers.length)
         {
             if(ConfigCore.thingsToKillForTiers[currentTierForPlayer.get(entityPlayer)].contains(","))
             {
@@ -160,6 +166,32 @@ public class TierHandler
                         }
 
                         return;
+                    }
+                }
+            } else if(!ConfigCore.thingsToKillForTiers[currentTierForPlayer.get(entityPlayer)].contains(",") && !ConfigCore.thingsToKillForTiers[currentTierForPlayer.get(entityPlayer)].equals(""))
+            {
+                if(ConfigCore.thingsToKillForTiers[currentTierForPlayer.get(entityPlayer)].equals(boss))
+                {
+                    if(bossesKilledForPlayer.containsKey(entityPlayer))
+                    {
+                        List<String> copy = bossesKilledForPlayer.get(entityPlayer);
+                        copy.add(boss);
+
+                        if(!bossesKilledForPlayer.get(entityPlayer).contains(boss))
+                        {
+                            bossesKilledForPlayer.put(entityPlayer, copy);
+                        }
+                    } else
+                    {
+                        setupPlayerBosses(entityPlayer);
+
+                        List<String> copy = bossesKilledForPlayer.get(entityPlayer);
+                        copy.add(boss);
+
+                        if(!bossesKilledForPlayer.get(entityPlayer).contains(boss))
+                        {
+                            bossesKilledForPlayer.put(entityPlayer, copy);
+                        }
                     }
                 }
             }

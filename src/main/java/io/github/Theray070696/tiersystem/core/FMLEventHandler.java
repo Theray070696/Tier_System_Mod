@@ -44,10 +44,22 @@ public class FMLEventHandler
         {
             if(TierHandler.getCurrentTier() < ConfigCore.thingsToKillForTiers.length)
             {
-                String[] tiersAndBosses = ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTier()].split(",");
+                String[] tiersAndBosses = null;
                 String[] bossesKilled = TierHandler.getBossesKilled();
-                Arrays.sort(tiersAndBosses);
-                Arrays.sort(bossesKilled);
+
+                if(ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTier()].contains(","))
+                {
+                    tiersAndBosses = ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTier()].split(",");
+                    Arrays.sort(tiersAndBosses);
+                } else
+                {
+                    tiersAndBosses = new String[] { ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTier()] };
+                }
+
+                if(bossesKilled.length > 1)
+                {
+                    Arrays.sort(bossesKilled);
+                }
 
                 if(Arrays.equals(bossesKilled, tiersAndBosses))
                 {
@@ -93,10 +105,22 @@ public class FMLEventHandler
 
                     if(TierHandler.getCurrentTierForPlayer(player) < ConfigCore.thingsToKillForTiers.length)
                     {
-                        String[] tiersAndBosses = ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTierForPlayer(player)].split(",");
+                        String[] tiersAndBosses = null;
                         String[] bossesKilled = TierHandler.getBossesKilledForPlayer(player);
-                        Arrays.sort(tiersAndBosses);
-                        Arrays.sort(bossesKilled);
+
+                        if(ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTierForPlayer(player)].contains(","))
+                        {
+                            tiersAndBosses = ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTierForPlayer(player)].split(",");
+                            Arrays.sort(tiersAndBosses);
+                        } else
+                        {
+                            tiersAndBosses = new String[] { ConfigCore.thingsToKillForTiers[TierHandler.getCurrentTierForPlayer(player)] };
+                        }
+
+                        if(bossesKilled.length > 1)
+                        {
+                            Arrays.sort(bossesKilled);
+                        }
 
                         if(Arrays.equals(bossesKilled, tiersAndBosses))
                         {
