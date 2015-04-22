@@ -151,11 +151,14 @@ public class FMLEventHandler
     @SubscribeEvent
     public void onDisconnect(FMLNetworkEvent.ClientDisconnectionFromServerEvent event)
     {
+        LogHelper.info("Restoring client configs.");
+
         ConfigCore.tierCount = ConfigCore.clientTierCount;
         ConfigCore.tierRestrictions = ConfigCore.clientTierRestrictions;
         ConfigCore.modsBlocked = ConfigCore.clientModsBlocked;
         ConfigCore.blockMods = ConfigCore.clientBlockMods;
         ConfigCore.tiersAreServerWide = ConfigCore.clientTiersAreServerWide;
         ConfigCore.itemsToTurnInForNextTier = ConfigCore.clientItemsToTurnInForNextTier;
+        ConfigCore.useBlockedItem = ConfigCore.clientUseBlockedItem;
     }
 }

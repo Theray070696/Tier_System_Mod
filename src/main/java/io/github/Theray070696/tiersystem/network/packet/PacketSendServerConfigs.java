@@ -28,6 +28,7 @@ public class PacketSendServerConfigs extends AbstractPacket
         buffer.writeBoolean(ConfigCore.blockMods);
         buffer.writeBoolean(ConfigCore.tiersAreServerWide);
         ByteBufUtils.writeUTF8String(buffer, Joiner.on("/").skipNulls().join(ConfigCore.itemsToTurnInForNextTier));
+        buffer.writeBoolean(ConfigCore.useBlockedItem);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class PacketSendServerConfigs extends AbstractPacket
     {
         if(FMLCommonHandler.instance().getSide().isClient())
         {
-            LogHelper.info("Received server configs.");
+            LogHelper.info("Received server configs, applying.");
 
             ConfigCore.tierCount = buffer.readInt();
             ConfigCore.tierRestrictions = ByteBufUtils.readUTF8String(buffer).split("/");
@@ -43,6 +44,7 @@ public class PacketSendServerConfigs extends AbstractPacket
             ConfigCore.blockMods = buffer.readBoolean();
             ConfigCore.tiersAreServerWide = buffer.readBoolean();
             ConfigCore.itemsToTurnInForNextTier = ByteBufUtils.readUTF8String(buffer).split("/");
+            ConfigCore.useBlockedItem = buffer.readBoolean();
         }
     }
 

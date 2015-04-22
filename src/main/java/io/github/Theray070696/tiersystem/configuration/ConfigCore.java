@@ -19,6 +19,7 @@ public class ConfigCore
     public static final boolean blockModsDefault = false;
     public static final boolean tiersAreServerWideDefault = true;
     public static final String[] itemsToTurnInForNextTierDefault = {""};
+    public static final boolean useBlockedItemDefault = false;
 
     public static int tierCount;
     public static String[] tierRestrictions;
@@ -27,6 +28,7 @@ public class ConfigCore
     public static boolean blockMods;
     public static boolean tiersAreServerWide;
     public static String[] itemsToTurnInForNextTier;
+    public static boolean useBlockedItem;
 
     public static int clientTierCount;
     public static String[] clientTierRestrictions;
@@ -34,6 +36,7 @@ public class ConfigCore
     public static boolean clientBlockMods;
     public static boolean clientTiersAreServerWide;
     public static String[] clientItemsToTurnInForNextTier;
+    public static boolean clientUseBlockedItem;
 
     public static void loadConfig(FMLPreInitializationEvent event)
     {
@@ -46,10 +49,13 @@ public class ConfigCore
         modsBlocked = config.get("Tiers", "blockedMods", modsBlockedDefault, "Mod id's that are blocked, anything from this mod cannot be crafted or used in crafting.").getStringList();
         blockMods = config.get("Tiers", "blockMods", blockModsDefault, "Set this to true to enable blocking entire mods.").getBoolean(blockModsDefault);
         tiersAreServerWide = config.get("Tiers", "tiersAreServerWide", tiersAreServerWideDefault, "If true, tiers will be shared with the entire server, aka, everybody is on the same tier").getBoolean(tiersAreServerWideDefault);
+
         if(ModInfo.devModeActive)
         {
             itemsToTurnInForNextTier = config.get("Tiers", "itemsToTurnInForNextTier", itemsToTurnInForNextTierDefault, "What item(s)/block(s) you have to turn in to get to the next tier. Formatted the same as restricting items. You can specify an amount by putting it in after the name with a slash, '/', if there is no metadata. If there is metadata, put the slash between the metadata and the amount. IE: 'minecraft:stone/5,minecraft:log 1/6' would make it so you must turn in 5 stone and 6 spruce wood in order to progress to the next tier.").getStringList();
         }
+
+        useBlockedItem = config.get("Tiers", "useBlockedItem", useBlockedItemDefault, "Should the Blocked Item be enabled? This item turns items that are tier restricted from even being used, when the tier is unlocked, you can right-click the Blocked Item to get the item that was unusable").getBoolean(useBlockedItemDefault);
 
         config.save();
 
@@ -59,5 +65,6 @@ public class ConfigCore
         clientBlockMods = blockMods;
         clientTiersAreServerWide = tiersAreServerWide;
         clientItemsToTurnInForNextTier = itemsToTurnInForNextTier;
+        clientUseBlockedItem = useBlockedItem;
     }
 }

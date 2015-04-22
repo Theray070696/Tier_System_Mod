@@ -18,7 +18,7 @@ public class ItemChecker
 
     public static void checkForBlockedItems(TickEvent.PlayerTickEvent event)
     {
-        if(ConfigCore.tierCount > 0 && event.player != null)
+        if(ConfigCore.useBlockedItem && ConfigCore.tierCount > 0 && event.player != null)
         {
             EntityPlayer player = event.player;
 
