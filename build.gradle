@@ -17,14 +17,18 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.5b"
+version = "1.0.5c"
 group = "io.github.Theray070696.tiersystem" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "tiersystem"
 
 minecraft {
     version = "1.7.10-10.13.2.1347-1.7.10"
     assetDir = "eclipse/assets"
+    replaceIn "src/main/java/io/github/Theray070696/tiersystem/lib/ModInfo.java"
+    replace "version", project.version
 }
+
+version = "${project.minecraft.version}-$version"
 
 processResources
         {
@@ -32,10 +36,9 @@ processResources
             inputs.property "version", project.version
             inputs.property "mcversion", project.minecraft.version
 
-            // replace stuff in mcmod.info and the ModInfo file, nothing else
+            // replace stuff in mcmod.info file, nothing else
             from(sourceSets.main.resources.srcDirs) {
                 include 'mcmod.info'
-                include 'ModInfo.java'
 
                 // replace version and mcversion
                 expand 'version': project.version, 'mcversion': project.minecraft.version
