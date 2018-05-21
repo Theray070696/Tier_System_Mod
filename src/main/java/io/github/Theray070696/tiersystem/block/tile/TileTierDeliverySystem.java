@@ -1,6 +1,7 @@
 package io.github.Theray070696.tiersystem.block.tile;
 
 import io.github.Theray070696.tiersystem.configuration.ConfigCore;
+import io.github.Theray070696.tiersystem.lib.ModInfo;
 import io.github.Theray070696.tiersystem.tier.TierHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -96,7 +97,7 @@ public class TileTierDeliverySystem extends TileTierSystem implements IInventory
     @Override
     public boolean isUseableByPlayer(EntityPlayer player)
     {
-        return this.owner == null || player.getCommandSenderName().equalsIgnoreCase(this.getOwner().getCommandSenderName());
+        return (this.owner == null || player.getCommandSenderName().equalsIgnoreCase(this.getOwner().getCommandSenderName())) && ModInfo.devModeActive;
     }
 
     @Override
@@ -109,6 +110,12 @@ public class TileTierDeliverySystem extends TileTierSystem implements IInventory
     public void readFromNBT(NBTTagCompound nbtTagCompound)
     {
         super.readFromNBT(nbtTagCompound);
+
+        if(!ModInfo.devModeActive)
+        {
+            return;
+        }
+
         NBTTagList nbtTagList = nbtTagCompound.getTagList("Items", 10);
         this.inventory = new ItemStack[this.getSizeInventory()];
 
@@ -150,6 +157,12 @@ public class TileTierDeliverySystem extends TileTierSystem implements IInventory
     public void writeToNBT(NBTTagCompound nbtTagCompound)
     {
         super.writeToNBT(nbtTagCompound);
+
+        if(!ModInfo.devModeActive)
+        {
+            return;
+        }
+
         NBTTagList nbtTagList = new NBTTagList();
 
         for(int i = 0; i < this.inventory.length; ++i)
@@ -189,6 +202,11 @@ public class TileTierDeliverySystem extends TileTierSystem implements IInventory
 
     public void updateEntity()
     {
+        if(!ModInfo.devModeActive)
+        {
+            return;
+        }
+
         if(!this.worldObj.isRemote)
         {
             if(ConfigCore.itemsToTurnInForNextTier.length > 0 && this.getOwner() != null && this.getStackInSlot(0) != null && !ConfigCore.itemsToTurnInForNextTier[TierHandler.getCurrentTierForPlayer(this.getOwner())].equals(""))

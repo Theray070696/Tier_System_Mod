@@ -20,6 +20,7 @@ public class ConfigCore
     public static final boolean tiersAreServerWideDefault = true;
     public static final String[] itemsToTurnInForNextTierDefault = {""};
     public static final boolean useBlockedItemDefault = false;
+    public static final boolean enableDebugModeDefault = false;
 
     public static int tierCount;
     public static String[] tierRestrictions;
@@ -29,6 +30,7 @@ public class ConfigCore
     public static boolean tiersAreServerWide;
     public static String[] itemsToTurnInForNextTier;
     public static boolean useBlockedItem;
+    public static boolean enableDebugMode;
 
     public static int clientTierCount;
     public static String[] clientTierRestrictions;
@@ -49,6 +51,8 @@ public class ConfigCore
         modsBlocked = config.get("Tiers", "blockedMods", modsBlockedDefault, "Mod id's that are blocked, anything from this mod cannot be crafted or used in crafting.").getStringList();
         blockMods = config.get("Tiers", "blockMods", blockModsDefault, "Set this to true to enable blocking entire mods.").getBoolean(blockModsDefault);
         tiersAreServerWide = config.get("Tiers", "tiersAreServerWide", tiersAreServerWideDefault, "If true, tiers will be shared with the entire server, aka, everybody is on the same tier").getBoolean(tiersAreServerWideDefault);
+
+        enableDebugMode = config.get("Misc", "enableDebugMode", enableDebugModeDefault, "If true, enables some WiP features that will never be finished").getBoolean(enableDebugModeDefault);
 
         if(ModInfo.devModeActive)
         {

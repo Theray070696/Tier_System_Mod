@@ -49,7 +49,11 @@ public class TierSystem
         ConfigCore.loadConfig(event);
 
         ModItems.loadItems();
-        ModBlocks.loadBlocks();
+
+        if(ConfigCore.enableDebugMode)
+        {
+            ModBlocks.loadBlocks();
+        }
 
         PluginHandler.getInstance().preInit();
 
@@ -76,7 +80,10 @@ public class TierSystem
 
         NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new GuiHandler());
 
-        ModBlocks.registerTileEntities();
+        if(ConfigCore.enableDebugMode)
+        {
+            ModBlocks.registerTileEntities();
+        }
 
         FMLCommonHandler.instance().bus().register(new FMLEventHandler());
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandler());
